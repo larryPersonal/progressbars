@@ -1,15 +1,18 @@
-#progressback {
+#progressback1,#progressback2,#progressback3,#progressback4,#progressback5 
+{
     width: 100%;
+	height: 30px;
     background-color: grey;
 }
 
-#progressback div
+#progress1,#progress2,#progress3,#progress4,#progress5
 {
-	height: 30%;
+	width: 0%;
+	height: 30px;
 	background-color: blue;
 }
 
-
 div {
 	color: white;
+	text-align: center;
 }
