@@ -2,11 +2,13 @@
     width: 100%;
     background-color: grey;
 }
-#progress1, #progress2, #progress3 {
-    width: 1%;
-    height: 30px;
-    background-color: blue;
+
+#progressback div
+{
+	height: 30%;
+	background-color: blue;
 }
+
 
 div {
 	color: white;
