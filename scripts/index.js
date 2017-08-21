@@ -109,72 +109,71 @@ function affectbar( selectedindex, value)
 
 function updateBar(selectedindex, direction) 
 {
-  var selectedbar = bars[selectedindex];
-  var id; // interval
+	var selectedbar = bars[selectedindex];
+	var id; // interval
   
-  barAnimating = true;
-  if (direction == false)
-	id = setInterval(framebackward, 10);
-  else
-	id = setInterval(frameforward, 10);
+	barAnimating = true;
+	if (direction == false)
+		id = setInterval(framebackward, 10);
+	else
+		id = setInterval(frameforward, 10);
   
-  //the following 2 functions are scoped to updateBar only
-  //frameforward - animate in the forward direction
-  function frameforward()
-  {
-      if (barlengths[selectedindex] >= barTargetVal) 
+	//the following 2 functions are scoped to updateBar only
+	//frameforward - animate in the forward direction
+	function frameforward()
 	{
-      clearInterval(id);
-	  barlengths[selectedindex] = barTargetVal;
-	  barCurrVal = barTargetVal = 0;
-	  barAnimating = false;
-    } 
-	else 
-	{
-      barlengths[selectedindex]++;
+		if (barlengths[selectedindex] >= barTargetVal) 
+		{
+			clearInterval(id);
+			barlengths[selectedindex] = barTargetVal;
+			barCurrVal = barTargetVal = 0;
+			barAnimating = false;
+		} 
+		else 
+		{
+			barlengths[selectedindex]++;
 	  
-	  var targetwidth = barlengths[selectedindex]/maxlength * maxlength;
+			var targetwidth = barlengths[selectedindex]/maxlength * maxlength;
 	    
-	  if (targetwidth <= 100)
-		selectedbar.setAttribute("style","width:" + targetwidth +"%;background-color:blue;" ); 
-	  else
-		selectedbar.setAttribute("style","width:100%; background-color:red;" ); 
-	  
-	  
-      selectedbar.innerHTML = barlengths[selectedindex] * 1  + '%';
-    }
-  }
+			if (targetwidth <= 100)
+				selectedbar.setAttribute("style","width:" + targetwidth +"%;background-color:blue;" ); 
+			else
+				selectedbar.setAttribute("style","width:100%; background-color:red;" ); 
+
+			selectedbar.innerHTML = barlengths[selectedindex] * 1  + '%';
+		}	
+	}
 
 	//framebackward - animate in the reverse direction
-  function framebackward()
-  {
-     if (barlengths[selectedindex] <= barTargetVal) 
+	function framebackward()
 	{
-      clearInterval(id);
-	  barlengths[selectedindex] = barTargetVal;
-	  barCurrVal = barTargetVal = 0;
-	  barAnimating = false;
-    } 
-	else 
-	{
-      barlengths[selectedindex]--;
+		if (barlengths[selectedindex] <= barTargetVal) 
+		{
+			clearInterval(id);
+			barlengths[selectedindex] = barTargetVal;
+			barCurrVal = barTargetVal = 0;
+			barAnimating = false;
+		} 
+		else 
+		{
+			barlengths[selectedindex]--;
 	  
-	  var targetwidth = barlengths[selectedindex]/maxlength * maxlength;
-	  if (targetwidth <= 0)
-	  {
-		selectedbar.setAttribute("style","width:0%"); 
-	  }
-	  else if (targetwidth >= 100)
-	  {
-		selectedbar.setAttribute("style","width:100%; background-color:red;" ); 
+			var targetwidth = barlengths[selectedindex]/maxlength * maxlength;
+			if (targetwidth <= 0)
+			{
+				selectedbar.setAttribute("style","width:0%"); 
+			}
+			else if (targetwidth >= 100)
+			{
+				selectedbar.setAttribute("style","width:100%; background-color:red;" ); 
 	  
-	  }
-	  else
-	  {
-		selectedbar.setAttribute("style","width:" + targetwidth +"%;background-color:blue" ); 
+			}
+			else
+			{
+				selectedbar.setAttribute("style","width:" + targetwidth +"%;background-color:blue" ); 
 	  
-	  }
-      selectedbar.innerHTML = barlengths[selectedindex] * 1  + '%';
-    }
-  }
+			}
+			selectedbar.innerHTML = barlengths[selectedindex] * 1  + '%';
+		}
+	}
 }
